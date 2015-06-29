@@ -11,7 +11,6 @@
 		E26FF5101B41047F000F5455 /* TriangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26FF50F1B41047F000F5455 /* TriangleTests.swift */; };
 		E26FF5111B41049A000F5455 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F49291B3F7A3C00C43DDB /* Triangle.swift */; };
 		E26FF5121B41055D000F5455 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492B1B3F7AAA00C43DDB /* Circle.swift */; };
-		E27E80271B41D69D00BE2072 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D3B2D1B3F3EDF00C6F1D4 /* CGPoint.swift */; };
 		E28F49281B3F7A2300C43DDB /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F49271B3F7A2300C43DDB /* Delaunay.swift */; };
 		E28F492A1B3F7A3C00C43DDB /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F49291B3F7A3C00C43DDB /* Triangle.swift */; };
 		E28F492C1B3F7AAA00C43DDB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492B1B3F7AAA00C43DDB /* Circle.swift */; };
@@ -27,10 +26,18 @@
 		E2E4C4A51B3F16E300E399FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A31B3F16E300E399FB /* Main.storyboard */; };
 		E2E4C4A71B3F16E300E399FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A61B3F16E300E399FB /* Images.xcassets */; };
 		E2E4C4AA1B3F16E300E399FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A81B3F16E300E399FB /* LaunchScreen.xib */; };
+		E2EE48CB1B41DDEF00857A74 /* LowPoly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4C4791B3F13C500E399FB /* LowPoly.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		E2E4C4861B3F13C600E399FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2E4C4701B3F13C500E399FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2E4C4781B3F13C500E399FB;
+			remoteInfo = LowPoly;
+		};
+		E2EE48C91B41DDDD00857A74 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E2E4C4701B3F13C500E399FB /* Project object */;
 			proxyType = 1;
@@ -81,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EE48CB1B41DDEF00857A74 /* LowPoly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +260,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E2EE48CA1B41DDDD00857A74 /* PBXTargetDependency */,
 			);
 			name = LowPolyExample;
 			productName = LowPolyExample;
@@ -358,7 +367,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E27E80271B41D69D00BE2072 /* CGPoint.swift in Sources */,
 				E2E4C4A01B3F16E300E399FB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +378,11 @@
 			isa = PBXTargetDependency;
 			target = E2E4C4781B3F13C500E399FB /* LowPoly */;
 			targetProxy = E2E4C4861B3F13C600E399FB /* PBXContainerItemProxy */;
+		};
+		E2EE48CA1B41DDDD00857A74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2E4C4781B3F13C500E399FB /* LowPoly */;
+			targetProxy = E2EE48C91B41DDDD00857A74 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
