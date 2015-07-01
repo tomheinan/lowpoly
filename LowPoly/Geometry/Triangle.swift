@@ -19,67 +19,46 @@ struct Triangle: Equatable, Hashable, Printable {
     }
     
     var circumcircle: Circle {
+        let A = b.x - a.x
+        let B = b.y - a.y
+        let C = c.x - a.x
+        let D = c.y - a.y
         
+        let E = A * (a.x + b.x) + B * (a.y + b.y)
+        let F = C * (a.x + c.x) + D * (a.y + c.y)
         
-        let ax = a.x
-        let ay = a.y
-        let bx = b.x
-        let by = b.y
-        let cx = c.x
-        let cy = c.y
-        let fabsy1y2 = fabs(ay - by)
-        let fabsy2y3 = fabs(by - cy)
+        let G = 2.0 * (A * (c.y - b.y) - B * (c.x - b.x))
         
-        var xc: CGFloat
-        var yc: CGFloat
-        var m1: CGFloat
-        var m2: CGFloat
-        var mx1: CGFloat
-        var mx2: CGFloat
-        var my1: CGFloat
-        var my2: CGFloat
+        var center: CGPoint
         var dx: CGFloat
         var dy: CGFloat
         
-        if fabsy1y2 < CGFloat.epsilon {
-            m2  = -((cx - bx) / (cy - by))
-            mx2 = (bx + cx) / 2.0
-            my2 = (by + cy) / 2.0
-            xc  = (bx + ax) / 2.0
-            yc  = m2 * (xc - mx2) + my2
-        }
-        
-        else if fabsy2y3 < CGFloat.epsilon {
-            m1  = -((bx - ax) / (by - ay))
-            mx1 = (ax + bx) / 2.0
-            my1 = (ay + by) / 2.0
-            xc  = (cx + bx) / 2.0
-            yc  = m1 * (xc - mx1) + my1
-        }
+        if (fabs(G) < CGFloat.epsilon) {
+            // Collinear - find extremes and use the midpoint
+            let minx = min(a.x, b.x, c.x)
+            let miny = min(a.y, b.y, c.y)
+            let maxx = max(a.x, b.x, c.x)
+            let maxy = max(a.y, b.y, c.y)
             
+            center = CGPoint(x: (minx + maxx) * 0.5, y: (miny + maxy) * 0.5)
+            dx = center.x - minx
+            dy = center.y - miny
+        }
         else {
-            m1  = -((bx - ax) / (by - ay))
-            m2  = -((cx - bx) / (cy - by))
-            mx1 = (ax + bx) / 2.0
-            mx2 = (bx + cx) / 2.0
-            my1 = (ay + by) / 2.0
-            my2 = (by + cy) / 2.0
-            xc  = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2)
+            let cx = (D * E - B * F) / G
+            let cy = (A * F - C * E) / G
             
-            if fabsy1y2 > fabsy2y3 {
-                yc = m1 * (xc - mx1) + my1
-            } else {
-                yc = m2 * (xc - mx2) + my2
-            }
+            center = CGPoint(x: cx, y: cy)
+            dx = center.x - a.x
+            dy = center.y - a.y
         }
         
-        dx = bx - xc
-        dy = by - yc
+        let radius = sqrt(dx * dx + dy * dy)
         
-        return Circle(center: CGPointMake(xc, yc), radius: sqrt(dx * dx + dy * dy))
+        return Circle(center: center, radius: radius)
     }
     
-    var path: CGPathRef {
+    var path: CGPath {
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, a.x, a.y)
         CGPathAddLineToPoint(path, nil, b.x, b.y)
