@@ -12,11 +12,10 @@ import XCTest
 class TriangleTests: XCTestCase {
     
     func testCircumcircle() {
-        let edge = Edge(start: CGPointMake(0, 10), end: CGPointMake(10, 0))
-        let triangle = Triangle(a: CGPointMake(0, 0), b: edge.start, c: edge.end)
+        let triangle = Triangle(a: CGPoint(x: 0.0, y: 0.0), b: CGPoint(x: 2.0, y: 5.0), c: CGPoint(x: 5.0, y: 0.0))
+        let expectedCircumcircle = Circle(center: CGPoint(x: 2.5, y: 1.9), radius: sqrt(9.86))
         
-        let expectedCircumcircle = Circle(center: CGPointMake(5.0, 5.0), radius: edge.length / 2)
-        XCTAssertTrue(triangle.circumcircle == expectedCircumcircle, "Should be a circle with center \(expectedCircumcircle.center) and radius \(expectedCircumcircle.radius)")
+        XCTAssertTrue(triangle.circumcircle == expectedCircumcircle, "Expected \(expectedCircumcircle), got \(triangle.circumcircle)")
     }
     
     func testSharesVertex() {

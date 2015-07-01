@@ -19,15 +19,7 @@ struct Triangle: Equatable, Hashable, Printable {
     }
     
     var circumcircle: Circle {
-        // Unapologetically stolen from https://gist.github.com/mutoo/5617691
         
-        // TODO: For some reason, Xcode won't compile this if it's defined on a CGFloat extension,
-        // so that's why it's here instead
-        #if CGFLOAT_IS_DOUBLE
-            let CGFLOAT_EPSILON = CGFloat(DBL_EPSILON)
-        #else
-            let CGFLOAT_EPSILON = CGFloat(FLT_EPSILON)
-        #endif
         
         let ax = a.x
         let ay = a.y
@@ -49,7 +41,7 @@ struct Triangle: Equatable, Hashable, Printable {
         var dx: CGFloat
         var dy: CGFloat
         
-        if fabsy1y2 < CGFLOAT_EPSILON {
+        if fabsy1y2 < CGFloat.epsilon {
             m2  = -((cx - bx) / (cy - by))
             mx2 = (bx + cx) / 2.0
             my2 = (by + cy) / 2.0
@@ -57,7 +49,7 @@ struct Triangle: Equatable, Hashable, Printable {
             yc  = m2 * (xc - mx2) + my2
         }
         
-        else if fabsy2y3 < CGFLOAT_EPSILON {
+        else if fabsy2y3 < CGFloat.epsilon {
             m1  = -((bx - ax) / (by - ay))
             mx1 = (ax + bx) / 2.0
             my1 = (ay + by) / 2.0
@@ -85,6 +77,15 @@ struct Triangle: Equatable, Hashable, Printable {
         dy = by - yc
         
         return Circle(center: CGPointMake(xc, yc), radius: sqrt(dx * dx + dy * dy))
+    }
+    
+    var path: CGPathRef {
+        let path = CGPathCreateMutable()
+        CGPathMoveToPoint(path, nil, a.x, a.y)
+        CGPathAddLineToPoint(path, nil, b.x, b.y)
+        CGPathCloseSubpath(path)
+        
+        return path
     }
 
     func sharesVertex(triangle: Triangle) -> Bool {

@@ -37,12 +37,11 @@ class Delaunay {
         
         // Add each vertex to the mesh
         for vertex in sortedVertices {
-            
             var edges = Set<Edge>()
             
             /* For each open triangle, check to see if the current point is
-             * inside it's circumcircle. If it is, remove the triangle and add
-             * its edges to an edge list. */
+            * inside its circumcircle. If it is, remove the triangle and add
+            * its edges to an edge list. */
             for var i = openTriangles.count - 1; i >= 0; --i {
                 let triangle = openTriangles[i]
                 let circumcircle = triangle.circumcircle
@@ -51,15 +50,13 @@ class Delaunay {
                 * then this triangle should never get checked again. Remove it
                 * from the open list, add it to the closed list, and skip. */
                 let dx = vertex.x - circumcircle.center.x
-                if dx > 0 && dx > circumcircle.radius {
-                    closedTriangles.append(triangle)
-                    openTriangles.removeAtIndex(i)
+                if dx > circumcircle.radius {
+                    closedTriangles.append(openTriangles.removeAtIndex(i))
                     continue
                 }
                 
                 /* If we're outside the circumcircle, skip this triangle. */
-                let dy = vertex.y - circumcircle.center.y
-                if sqrt(dx * dx + dy * dy) - circumcircle.radius > CGFLOAT_EPSILON {
+                if !circumcircle.contains(vertex) {
                     continue
                 }
                 
@@ -90,7 +87,7 @@ class Delaunay {
         return triangleSet
     }
     
-    static func supertriangle(vertices: Set<CGPoint>) -> Triangle {
+    private static func supertriangle(vertices: Set<CGPoint>) -> Triangle {
         var (xmin: CGFloat, xmax: CGFloat, ymin: CGFloat, ymax: CGFloat) = (0, 0, 0, 0)
         
         for vertex in vertices {

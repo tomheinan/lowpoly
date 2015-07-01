@@ -14,9 +14,17 @@ struct Circle: Equatable, Printable {
     var center: CGPoint
     var radius: CGFloat
     
-    var bezierPath: UIBezierPath {
+    var path: CGPath {
         let rect = CGRectMake(center.x - radius, center.y - radius, radius * 2, radius * 2)
-        return UIBezierPath(ovalInRect: rect)
+        return CGPathCreateWithEllipseInRect(rect, nil)
+    }
+    
+    func contains(point: CGPoint) -> Bool {
+        let a = point.x - center.x
+        let b = point.y - center.y
+        let c = radius
+        
+        return (a * a) + (b * b) <= (c * c)
     }
     
     // MARK: Printable
@@ -30,5 +38,5 @@ struct Circle: Equatable, Printable {
 // MARK: Equatable
 
 func ==(lhs: Circle, rhs: Circle) -> Bool {
-    return CGPointEqualToPoint(lhs.center, rhs.center) && lhs.radius == rhs.radius
+    return CGPointEqualToPoint(lhs.center, rhs.center) && fabs(lhs.radius - rhs.radius) < CGFloat.epsilon
 }

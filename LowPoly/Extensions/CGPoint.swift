@@ -9,10 +9,14 @@
 import UIKit
 import CoreGraphics
 
-extension CGPoint: Hashable {
+extension CGPoint: Equatable, Hashable {
     
     public var hashValue: Int {
         return Float(x).hashValue ^ Float(y).hashValue
     }
     
+}
+
+public func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
+    return CGPointEqualToPoint(lhs, rhs)
 }

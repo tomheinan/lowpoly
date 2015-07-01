@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E25129831B449ABD00CF5BD5 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129821B449ABD00CF5BD5 /* CGPointTests.swift */; };
+		E25129861B44A04400CF5BD5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129851B44A04400CF5BD5 /* CGFloat.swift */; };
+		E25129871B44A06E00CF5BD5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129851B44A04400CF5BD5 /* CGFloat.swift */; };
 		E26D3B2E1B3F3EDF00C6F1D4 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D3B2D1B3F3EDF00C6F1D4 /* CGPoint.swift */; };
 		E26FF5101B41047F000F5455 /* TriangleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26FF50F1B41047F000F5455 /* TriangleTests.swift */; };
 		E26FF5111B41049A000F5455 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F49291B3F7A3C00C43DDB /* Triangle.swift */; };
@@ -47,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E25129821B449ABD00CF5BD5 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointTests.swift; path = Extensions/CGPointTests.swift; sourceTree = "<group>"; };
+		E25129851B44A04400CF5BD5 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = Extensions/CGFloat.swift; sourceTree = "<group>"; };
 		E26D3B2D1B3F3EDF00C6F1D4 /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = ../../lowpoly/LowPoly/Extensions/CGPoint.swift; sourceTree = "<group>"; };
 		E26FF50F1B41047F000F5455 /* TriangleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleTests.swift; path = Geometry/TriangleTests.swift; sourceTree = "<group>"; };
 		E28F49271B3F7A2300C43DDB /* Delaunay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Delaunay.swift; path = Geometry/Delaunay.swift; sourceTree = "<group>"; };
@@ -95,10 +100,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E25129841B449AC400CF5BD5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E25129821B449ABD00CF5BD5 /* CGPointTests.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		E26D3B2F1B3F3EE500C6F1D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E26D3B2D1B3F3EDF00C6F1D4 /* CGPoint.swift */,
+				E25129851B44A04400CF5BD5 /* CGFloat.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				E28F49311B3FC93E00C43DDB /* Geometry */,
+				E25129841B449AC400CF5BD5 /* Extensions */,
 				E2E4C4891B3F13C600E399FB /* Supporting Files */,
 			);
 			path = LowPolyTests;
@@ -341,6 +356,7 @@
 			files = (
 				E28F49281B3F7A2300C43DDB /* Delaunay.swift in Sources */,
 				E26D3B2E1B3F3EDF00C6F1D4 /* CGPoint.swift in Sources */,
+				E25129861B44A04400CF5BD5 /* CGFloat.swift in Sources */,
 				E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */,
 				E28F492E1B3F7F0500C43DDB /* Edge.swift in Sources */,
 				E28F492A1B3F7A3C00C43DDB /* Triangle.swift in Sources */,
@@ -352,7 +368,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25129871B44A06E00CF5BD5 /* CGFloat.swift in Sources */,
 				E29DED171B41C39E00CD9E10 /* Delaunay.swift in Sources */,
+				E25129831B449ABD00CF5BD5 /* CGPointTests.swift in Sources */,
 				E26FF5121B41055D000F5455 /* Circle.swift in Sources */,
 				E29DED1B1B41C3D200CD9E10 /* DelaunayTests.swift in Sources */,
 				E28F49321B3FCA5A00C43DDB /* Edge.swift in Sources */,
