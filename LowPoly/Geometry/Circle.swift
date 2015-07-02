@@ -20,11 +20,11 @@ struct Circle: Equatable, Printable {
     }
     
     func contains(point: CGPoint) -> Bool {
-        let a = point.x - center.x
-        let b = point.y - center.y
-        let c = radius
+        let A = point.x - center.x
+        let B = point.y - center.y
+        let C = radius
         
-        return (a * a) + (b * b) <= (c * c)
+        return (A * A) + (B * B) <= (C * C)
     }
     
     // MARK: Printable

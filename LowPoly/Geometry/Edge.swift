@@ -20,15 +20,7 @@ struct Edge: Equatable, Hashable, Printable {
     }
     
     var slope: CGFloat? {
-        // TODO: For some reason, Xcode won't compile this if it's defined on a CGFloat extension,
-        // so that's why it's here instead
-        #if CGFLOAT_IS_DOUBLE
-            let CGFLOAT_EPSILON = CGFloat(DBL_EPSILON)
-        #else
-            let CGFLOAT_EPSILON = CGFloat(FLT_EPSILON)
-        #endif
-        
-        if fabs(end.x - start.x) > CGFLOAT_EPSILON {
+        if fabs(end.x - start.x) > CGFloat.epsilon {
             return (end.y - start.y) / (end.x - start.x)
         } else {
             return nil

@@ -13,99 +13,40 @@ class Delaunay {
     static func triangulate(vertices: Set<CGPoint>) -> Set<Triangle> {
         var triangleSet = Set<Triangle>()
         
-        // TODO: For some reason, Xcode won't compile this if it's defined on a CGFloat extension,
-        // so that's why it's here instead
-        #if CGFLOAT_IS_DOUBLE
-            let CGFLOAT_EPSILON = CGFloat(DBL_EPSILON)
-        #else
-            let CGFLOAT_EPSILON = CGFloat(FLT_EPSILON)
-        #endif
-        
-        // We need at least three vertices to generate a triangulation
-        if vertices.count < 3 {
-            return triangleSet
-        }
-        
-        let supertriangle = self.supertriangle(vertices)
-        
-        // Generate an array of vertices sorted by x value, least to greatest
-        var sortedVertices = Array(vertices)
-        sortedVertices.sort({ $0.x < $1.x })
-        
-        var openTriangles = [supertriangle]
-        var closedTriangles = [Triangle]()
-        
-        // Add each vertex to the mesh
-        for vertex in sortedVertices {
-            var edges = Set<Edge>()
-            
-            /* For each open triangle, check to see if the current point is
-            * inside its circumcircle. If it is, remove the triangle and add
-            * its edges to an edge list. */
-            for var i = openTriangles.count - 1; i >= 0; --i {
-                let triangle = openTriangles[i]
-                let circumcircle = triangle.circumcircle
-                
-                /* If this point is to the right of this triangle's circumcircle,
-                * then this triangle should never get checked again. Remove it
-                * from the open list, add it to the closed list, and skip. */
-                let dx = vertex.x - circumcircle.center.x
-                if dx > circumcircle.radius {
-                    closedTriangles.append(openTriangles.removeAtIndex(i))
-                    continue
-                }
-                
-                /* If we're outside the circumcircle, skip this triangle. */
-                if !circumcircle.contains(vertex) {
-                    continue
-                }
-                
-                /* Remove the triangle and add its edges to the edge list. */
-                edges.unionInPlace(triangle.edges)
-                openTriangles.removeAtIndex(i)
-            }
-            
-            /* Add a new triangle for each edge. */
-            for edge in edges {
-                openTriangles.append(Triangle(a: edge.start, b: edge.end, c: vertex))
-            }
-        }
-        
-        /* Copy any remaining open triangles to the closed list, and then
-         * remove any triangles that share a vertex with the supertriangle,
-         * building a list of triplets that represent triangles. */
-        for triangle in openTriangles {
-            closedTriangles.append(triangle)
-        }
-        
-        for triangle in closedTriangles {
-            if !triangle.sharesVertex(supertriangle) {
-                triangleSet.insert(triangle)
-            }
-        }
+        // Create supertriangle to encompass all vertices
         
         return triangleSet
     }
     
-    private static func supertriangle(vertices: Set<CGPoint>) -> Triangle {
-        var (xmin: CGFloat, xmax: CGFloat, ymin: CGFloat, ymax: CGFloat) = (0, 0, 0, 0)
+    static func supertriangle(vertices: Set<CGPoint>) -> Triangle {
+        var (minx: CGFloat, miny: CGFloat, maxx: CGFloat, maxy: CGFloat) = (CGFloat.max, CGFloat.max, -CGFloat.max, -CGFloat.max)
         
+        // NOTE: There's a bit of a heuristic here. If the bounding triangle
+        // is too large and you see overflow/underflow errors. If it is too small
+        // you end up with a non-convex hull.
         for vertex in vertices {
-            if vertex.x < xmin { xmin = vertex.x }
-            if vertex.x > xmax { xmax = vertex.x }
-            if vertex.y < ymin { ymin = vertex.y }
-            if vertex.y > ymax { ymax = vertex.y }
+            if vertex.x < minx {
+                minx = vertex.x
+            }
+            if vertex.y < miny {
+                miny = vertex.y
+            }
+            if vertex.x > maxx {
+                maxx = vertex.x
+            }
+            if vertex.y > maxy {
+                maxy = vertex.y
+            }
         }
         
-        // TODO: Improve this to largest incircle for equilateral triangle
+        let dx = (maxx - minx) * 10
+        let dy = (maxy - miny) * 10
         
-        let dx = xmax - xmin
-        let dy = ymax - ymin
-        let dmax = max(dx, dy)
-        let xmid = xmin + (dx * 0.5)
-        let ymid = ymin + (dy * 0.5)
+        let a = CGPoint(x: minx - dx, y: miny - dy * 3)
+        let b = CGPoint(x: minx - dx, y: maxy + dy)
+        let c = CGPoint(x: maxx + dx * 3, y: maxy + dy)
         
-        return Triangle(a: CGPointMake(xmid - (20 * dmax), ymid - dmax), b: CGPointMake(xmid, ymid + (20 * dmax)), c: CGPointMake(xmid + (20 * dmax), ymid - dmax))
+        return Triangle(a: a, b: b, c: c)
     }
     
 }
