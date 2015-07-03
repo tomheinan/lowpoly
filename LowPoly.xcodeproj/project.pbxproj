@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E23434511B46F29600B47472 /* LowPoly-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434501B46F29600B47472 /* LowPoly-Bridging-Header.h */; };
 		E25129831B449ABD00CF5BD5 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129821B449ABD00CF5BD5 /* CGPointTests.swift */; };
 		E25129861B44A04400CF5BD5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129851B44A04400CF5BD5 /* CGFloat.swift */; };
 		E25129871B44A06E00CF5BD5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129851B44A04400CF5BD5 /* CGFloat.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E23434501B46F29600B47472 /* LowPoly-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LowPoly-Bridging-Header.h"; path = "Supporting Files/LowPoly-Bridging-Header.h"; sourceTree = "<group>"; };
 		E25129821B449ABD00CF5BD5 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointTests.swift; path = Extensions/CGPointTests.swift; sourceTree = "<group>"; };
 		E25129851B44A04400CF5BD5 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = Extensions/CGFloat.swift; sourceTree = "<group>"; };
 		E25129881B44AEDE00CF5BD5 /* CircleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTests.swift; path = Geometry/CircleTests.swift; sourceTree = "<group>"; };
@@ -102,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E234344B1B46F1FA00B47472 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Submodules;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		E25129841B449AC400CF5BD5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 				E2E4C4951B3F14C700E399FB /* LowPolyView.swift */,
 				E299497E1B3F79BF005AE2A5 /* Geometry */,
 				E26D3B2F1B3F3EE500C6F1D4 /* Extensions */,
+				E234344B1B46F1FA00B47472 /* Submodules */,
 				E2E4C47C1B3F13C500E399FB /* Supporting Files */,
 			);
 			path = LowPoly;
@@ -176,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E4C47D1B3F13C500E399FB /* Info.plist */,
+				E23434501B46F29600B47472 /* LowPoly-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -225,6 +237,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23434511B46F29600B47472 /* LowPoly-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +543,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SOURCE_ROOT)/LowPoly/Supporting Files/LowPoly-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -547,12 +561,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SOURCE_ROOT)/LowPoly/Supporting Files/LowPoly-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		E2E4C4931B3F13C600E399FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -564,12 +580,15 @@
 				INFOPLIST_FILE = LowPolyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		E2E4C4941B3F13C600E399FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -577,6 +596,7 @@
 				INFOPLIST_FILE = LowPolyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -591,6 +611,7 @@
 				INFOPLIST_FILE = LowPolyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -601,6 +622,7 @@
 				INFOPLIST_FILE = LowPolyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
