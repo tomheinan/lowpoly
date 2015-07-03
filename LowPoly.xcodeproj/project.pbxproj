@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		E23434511B46F29600B47472 /* LowPoly-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434501B46F29600B47472 /* LowPoly-Bridging-Header.h */; };
+		E23434871B4708D300B47472 /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = E234345D1B4708D300B47472 /* shapes.cc */; };
+		E23434881B4708D300B47472 /* shapes.cc in Sources */ = {isa = PBXBuildFile; fileRef = E234345D1B4708D300B47472 /* shapes.cc */; };
+		E23434891B4708D300B47472 /* shapes.h in Headers */ = {isa = PBXBuildFile; fileRef = E234345E1B4708D300B47472 /* shapes.h */; };
+		E234348A1B4708D300B47472 /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E234345F1B4708D300B47472 /* utils.h */; };
+		E234348B1B4708D300B47472 /* poly2tri.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434601B4708D300B47472 /* poly2tri.h */; };
+		E234348C1B4708D300B47472 /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434621B4708D300B47472 /* advancing_front.cc */; };
+		E234348D1B4708D300B47472 /* advancing_front.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434621B4708D300B47472 /* advancing_front.cc */; };
+		E234348E1B4708D300B47472 /* advancing_front.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434631B4708D300B47472 /* advancing_front.h */; };
+		E234348F1B4708D300B47472 /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434641B4708D300B47472 /* cdt.cc */; };
+		E23434901B4708D300B47472 /* cdt.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434641B4708D300B47472 /* cdt.cc */; };
+		E23434911B4708D300B47472 /* cdt.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434651B4708D300B47472 /* cdt.h */; };
+		E23434921B4708D300B47472 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434661B4708D300B47472 /* sweep.cc */; };
+		E23434931B4708D300B47472 /* sweep.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434661B4708D300B47472 /* sweep.cc */; };
+		E23434941B4708D300B47472 /* sweep.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434671B4708D300B47472 /* sweep.h */; };
+		E23434951B4708D300B47472 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434681B4708D300B47472 /* sweep_context.cc */; };
+		E23434961B4708D300B47472 /* sweep_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = E23434681B4708D300B47472 /* sweep_context.cc */; };
+		E23434971B4708D300B47472 /* sweep_context.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434691B4708D300B47472 /* sweep_context.h */; };
+		E23434C21B47092A00B47472 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492B1B3F7AAA00C43DDB /* Circle.swift */; };
 		E25129831B449ABD00CF5BD5 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129821B449ABD00CF5BD5 /* CGPointTests.swift */; };
 		E25129861B44A04400CF5BD5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129851B44A04400CF5BD5 /* CGFloat.swift */; };
 		E25129871B44A06E00CF5BD5 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25129851B44A04400CF5BD5 /* CGFloat.swift */; };
@@ -18,7 +36,6 @@
 		E26FF5121B41055D000F5455 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492B1B3F7AAA00C43DDB /* Circle.swift */; };
 		E28F49281B3F7A2300C43DDB /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F49271B3F7A2300C43DDB /* Delaunay.swift */; };
 		E28F492A1B3F7A3C00C43DDB /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F49291B3F7A3C00C43DDB /* Triangle.swift */; };
-		E28F492C1B3F7AAA00C43DDB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492B1B3F7AAA00C43DDB /* Circle.swift */; };
 		E28F492E1B3F7F0500C43DDB /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492D1B3F7F0500C43DDB /* Edge.swift */; };
 		E28F49301B3FC93900C43DDB /* EdgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492F1B3FC93900C43DDB /* EdgeTests.swift */; };
 		E28F49321B3FCA5A00C43DDB /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F492D1B3F7F0500C43DDB /* Edge.swift */; };
@@ -53,6 +70,18 @@
 
 /* Begin PBXFileReference section */
 		E23434501B46F29600B47472 /* LowPoly-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LowPoly-Bridging-Header.h"; path = "Supporting Files/LowPoly-Bridging-Header.h"; sourceTree = "<group>"; };
+		E234345D1B4708D300B47472 /* shapes.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shapes.cc; sourceTree = "<group>"; };
+		E234345E1B4708D300B47472 /* shapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes.h; sourceTree = "<group>"; };
+		E234345F1B4708D300B47472 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		E23434601B4708D300B47472 /* poly2tri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poly2tri.h; sourceTree = "<group>"; };
+		E23434621B4708D300B47472 /* advancing_front.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advancing_front.cc; sourceTree = "<group>"; };
+		E23434631B4708D300B47472 /* advancing_front.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = advancing_front.h; sourceTree = "<group>"; };
+		E23434641B4708D300B47472 /* cdt.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cdt.cc; sourceTree = "<group>"; };
+		E23434651B4708D300B47472 /* cdt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdt.h; sourceTree = "<group>"; };
+		E23434661B4708D300B47472 /* sweep.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep.cc; sourceTree = "<group>"; };
+		E23434671B4708D300B47472 /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep.h; sourceTree = "<group>"; };
+		E23434681B4708D300B47472 /* sweep_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sweep_context.cc; sourceTree = "<group>"; };
+		E23434691B4708D300B47472 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
 		E25129821B449ABD00CF5BD5 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointTests.swift; path = Extensions/CGPointTests.swift; sourceTree = "<group>"; };
 		E25129851B44A04400CF5BD5 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = Extensions/CGFloat.swift; sourceTree = "<group>"; };
 		E25129881B44AEDE00CF5BD5 /* CircleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTests.swift; path = Geometry/CircleTests.swift; sourceTree = "<group>"; };
@@ -107,9 +136,54 @@
 		E234344B1B46F1FA00B47472 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				E23434571B4708D300B47472 /* poly2tri */,
 			);
 			name = Submodules;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		E23434571B4708D300B47472 /* poly2tri */ = {
+			isa = PBXGroup;
+			children = (
+				E234345B1B4708D300B47472 /* poly2tri */,
+			);
+			name = poly2tri;
+			path = LowPoly/Submodules/poly2tri;
+			sourceTree = "<group>";
+		};
+		E234345B1B4708D300B47472 /* poly2tri */ = {
+			isa = PBXGroup;
+			children = (
+				E23434601B4708D300B47472 /* poly2tri.h */,
+				E234345C1B4708D300B47472 /* common */,
+				E23434611B4708D300B47472 /* sweep */,
+			);
+			path = poly2tri;
+			sourceTree = "<group>";
+		};
+		E234345C1B4708D300B47472 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				E234345F1B4708D300B47472 /* utils.h */,
+				E234345E1B4708D300B47472 /* shapes.h */,
+				E234345D1B4708D300B47472 /* shapes.cc */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		E23434611B4708D300B47472 /* sweep */ = {
+			isa = PBXGroup;
+			children = (
+				E23434631B4708D300B47472 /* advancing_front.h */,
+				E23434621B4708D300B47472 /* advancing_front.cc */,
+				E23434651B4708D300B47472 /* cdt.h */,
+				E23434641B4708D300B47472 /* cdt.cc */,
+				E23434671B4708D300B47472 /* sweep.h */,
+				E23434661B4708D300B47472 /* sweep.cc */,
+				E23434691B4708D300B47472 /* sweep_context.h */,
+				E23434681B4708D300B47472 /* sweep_context.cc */,
+			);
+			path = sweep;
 			sourceTree = "<group>";
 		};
 		E25129841B449AC400CF5BD5 /* Extensions */ = {
@@ -237,6 +311,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23434911B4708D300B47472 /* cdt.h in Headers */,
+				E234348A1B4708D300B47472 /* utils.h in Headers */,
+				E234348B1B4708D300B47472 /* poly2tri.h in Headers */,
+				E23434891B4708D300B47472 /* shapes.h in Headers */,
+				E234348E1B4708D300B47472 /* advancing_front.h in Headers */,
+				E23434971B4708D300B47472 /* sweep_context.h in Headers */,
+				E23434941B4708D300B47472 /* sweep.h in Headers */,
 				E23434511B46F29600B47472 /* LowPoly-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,13 +451,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23434C21B47092A00B47472 /* Circle.swift in Sources */,
+				E23434951B4708D300B47472 /* sweep_context.cc in Sources */,
 				E28F49281B3F7A2300C43DDB /* Delaunay.swift in Sources */,
+				E23434871B4708D300B47472 /* shapes.cc in Sources */,
+				E234348C1B4708D300B47472 /* advancing_front.cc in Sources */,
 				E26D3B2E1B3F3EDF00C6F1D4 /* CGPoint.swift in Sources */,
 				E25129861B44A04400CF5BD5 /* CGFloat.swift in Sources */,
+				E234348F1B4708D300B47472 /* cdt.cc in Sources */,
 				E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */,
 				E28F492E1B3F7F0500C43DDB /* Edge.swift in Sources */,
 				E28F492A1B3F7A3C00C43DDB /* Triangle.swift in Sources */,
-				E28F492C1B3F7AAA00C43DDB /* Circle.swift in Sources */,
+				E23434921B4708D300B47472 /* sweep.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,13 +471,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E25129871B44A06E00CF5BD5 /* CGFloat.swift in Sources */,
+				E23434881B4708D300B47472 /* shapes.cc in Sources */,
 				E29DED171B41C39E00CD9E10 /* Delaunay.swift in Sources */,
+				E23434901B4708D300B47472 /* cdt.cc in Sources */,
 				E25129831B449ABD00CF5BD5 /* CGPointTests.swift in Sources */,
 				E25129891B44AEDE00CF5BD5 /* CircleTests.swift in Sources */,
 				E26FF5121B41055D000F5455 /* Circle.swift in Sources */,
+				E23434931B4708D300B47472 /* sweep.cc in Sources */,
 				E29DED1B1B41C3D200CD9E10 /* DelaunayTests.swift in Sources */,
 				E28F49321B3FCA5A00C43DDB /* Edge.swift in Sources */,
 				E29DED1C1B41C42900CD9E10 /* CGPoint.swift in Sources */,
+				E234348D1B4708D300B47472 /* advancing_front.cc in Sources */,
+				E23434961B4708D300B47472 /* sweep_context.cc in Sources */,
 				E28F49301B3FC93900C43DDB /* EdgeTests.swift in Sources */,
 				E26FF5101B41047F000F5455 /* TriangleTests.swift in Sources */,
 				E26FF5111B41049A000F5455 /* Triangle.swift in Sources */,

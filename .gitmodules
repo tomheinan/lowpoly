@@ -1,0 +1,3 @@
+[submodule "LowPoly/Submodules/poly2tri"]
+	path = LowPoly/Submodules/poly2tri
+	url = git@github.com:jhasse/poly2tri.git
