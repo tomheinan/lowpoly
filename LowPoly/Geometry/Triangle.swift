@@ -62,6 +62,7 @@ struct Triangle: Equatable, Hashable, Printable {
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, a.x, a.y)
         CGPathAddLineToPoint(path, nil, b.x, b.y)
+        CGPathAddLineToPoint(path, nil, c.x, c.y)
         CGPathCloseSubpath(path)
         
         return path
@@ -77,10 +78,7 @@ struct Triangle: Equatable, Hashable, Printable {
     // MARK: Hashable
     
     var hashValue: Int {
-        let x = a.x + b.x + c.x
-        let y = a.y + b.y + c.y
-        let sum = Float(x + y)
-        return sum.hashValue
+        return a.hashValue ^ b.hashValue ^ c.hashValue
     }
     
     // MARK: Printable

@@ -43,18 +43,25 @@ struct Edge: Equatable, Hashable, Printable {
         return CGPointMake(x, y)
     }
     
+    init(start: CGPoint, end: CGPoint) {
+        if start.x > end.x {
+            self.start = end
+            self.end = start
+        } else {
+            self.start = start
+            self.end = end
+        }
+    }
+    
     // MARK: Hashable
     var hashValue: Int {
-        let x = start.x + end.x
-        let y = start.y + end.y
-        let sum = Float(x + y)
-        return sum.hashValue
+        return start.hashValue ^ end.hashValue
     }
     
     // MARK: Printable
     
     var description: String {
-        return "<Edge: start = \(start); end = \(end); length = \(length); slope = \(slope); yIntercept = \(yIntercept); midpoint = \(midpoint)>"
+        return "<Edge: start = \(start); end = \(end)>"
     }
     
 }
@@ -62,5 +69,5 @@ struct Edge: Equatable, Hashable, Printable {
 // MARK: Equatable
 
 func ==(lhs: Edge, rhs: Edge) -> Bool {
-    return (CGPointEqualToPoint(lhs.start, rhs.start) && CGPointEqualToPoint(lhs.end, rhs.end)) || (CGPointEqualToPoint(lhs.start, rhs.end) && CGPointEqualToPoint(lhs.end, rhs.start))
+    return (lhs.start == rhs.start && lhs.end == rhs.end) || (lhs.start == rhs.end && lhs.end == rhs.start)
 }

@@ -42,5 +42,23 @@ class EdgeTests: XCTestCase {
         let edge = Edge(start: CGPointMake(-5, -2), end: CGPointMake(5, 2))
         XCTAssertEqual(edge.midpoint, CGPointMake(0, 0), "Midpoint should be (0, 0)")
     }
+    
+    func testHashable() {
+        let e0 = Edge(start: CGPoint(x: 3, y: 2), end: CGPoint(x: 4, y: 5))
+        let e1 = Edge(start: CGPointMake(4, 5), end: CGPointMake(3, 2))
+        XCTAssertEqual(e0.hashValue, e1.hashValue, "Hash values should match")
+        
+//        let e2 = Edge(start: CGPointMake(4, 2), end: CGPointMake(3, 5))
+//        XCTAssertNotEqual(e0.hashValue, e2.hashValue, "Hash values should not match")
+    }
+    
+    func testEquatable() {
+        let e0 = Edge(start: CGPointMake(3, 2), end: CGPointMake(4, 5))
+        let e1 = Edge(start: CGPointMake(4, 5), end: CGPointMake(3, 2))
+        XCTAssertTrue(e0 == e1, "Edges should be equal")
+        
+        let e2 = Edge(start: CGPointMake(4, 2), end: CGPointMake(3, 5))
+        XCTAssertFalse(e0 == e2, "Edges should not be equal")
+    }
 
 }
