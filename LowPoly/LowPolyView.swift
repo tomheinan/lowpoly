@@ -56,8 +56,15 @@ class LowPolyView: UIView {
 //        }
         
         //var vertices: Set<CGPoint> = [CGPointMake(181.0, 212.0), CGPointMake(201.0, 575.0), CGPointMake(375.0, 0.0), CGPointMake(98.0, 111.0), CGPointMake(290.0, 620.0), CGPointMake(375.0, 667.0), CGPointMake(0.0, 0.0), CGPointMake(0.0, 667.0), CGPointMake(135.0, 439.0)]
-        var vertices: Array<CGPoint> = [CGPointMake(201.0, 575.0), CGPointMake(135.0, 439.0), CGPointMake(98.0, 111.0), CGPointMake(290.0, 620.0), CGPointMake(181.0, 212.0)]
-        vertices.sort({ $0.x < $1.x })
+        
+        var vertices: Set<CGPoint> = [
+            CGPoint(x: 98.0, y: 111.0),
+            CGPoint(x: 135.0, y: 439.0),
+            CGPoint(x: 201.0, y: 575.0),
+            CGPoint(x: 290.0, y: 620.0),
+            CGPoint(x: 181.0, y: 212.0)
+        ]
+        
         
         CGContextSetFillColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
         for vertex in vertices {
@@ -67,17 +74,21 @@ class LowPolyView: UIView {
         }
         
         // Triangulation
-        let triangulation = Delaunay.triangulate(vertices)
-        for triangle in triangulation {
-            println("drawing \(triangle)")
-            CGContextAddPath(context, triangle.path)
-            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
-            CGContextStrokePath(context)
-            
-            CGContextAddPath(context, triangle.circumcircle.path)
-            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 0.5).CGColor)
-            CGContextStrokePath(context)
-        }
+//        let triangulation = Delaunay.triangulate(vertices)
+//        for triangle in triangulation {
+//            println("drawing \(triangle)")
+//            CGContextAddPath(context, triangle.path)
+//            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
+//            CGContextStrokePath(context)
+//            
+//            CGContextAddPath(context, triangle.circumcircle.path)
+//            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 0.5).CGColor)
+//            CGContextStrokePath(context)
+//        }
+        
+        let triangles = Delaunay.triangulate(vertices, boundingRect: UIScreen.mainScreen().bounds)
+        
+        
     }
 
 }
