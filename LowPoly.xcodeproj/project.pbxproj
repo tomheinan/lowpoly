@@ -40,6 +40,7 @@
 		E2E4C4A71B3F16E300E399FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A61B3F16E300E399FB /* Images.xcassets */; };
 		E2E4C4AA1B3F16E300E399FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A81B3F16E300E399FB /* LaunchScreen.xib */; };
 		E2EE48CB1B41DDEF00857A74 /* LowPoly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4C4791B3F13C500E399FB /* LowPoly.framework */; };
+		E2F7C8361B4761B100D1A4A2 /* Delaunay.mm in Sources */ = {isa = PBXBuildFile; fileRef = E23434C41B470C7000B47472 /* Delaunay.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,13 +191,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		E28F49311B3FC93E00C43DDB /* Geometry */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Geometry;
-			sourceTree = "<group>";
-		};
 		E299497E1B3F79BF005AE2A5 /* Geometry */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +246,6 @@
 		E2E4C4881B3F13C600E399FB /* LowPolyTests */ = {
 			isa = PBXGroup;
 			children = (
-				E28F49311B3FC93E00C43DDB /* Geometry */,
 				E25129841B449AC400CF5BD5 /* Extensions */,
 				E2E4C4891B3F13C600E399FB /* Supporting Files */,
 			);
@@ -459,6 +452,7 @@
 				E23434CF1B4742C500B47472 /* CGPoint.swift in Sources */,
 				E234348D1B4708D300B47472 /* advancing_front.cc in Sources */,
 				E23434CE1B4742B600B47472 /* CGPointTests.swift in Sources */,
+				E2F7C8361B4761B100D1A4A2 /* Delaunay.mm in Sources */,
 				E23434961B4708D300B47472 /* sweep_context.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

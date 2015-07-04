@@ -9,9 +9,32 @@
 import UIKit
 
 @IBDesignable
-class LowPolyView: UIView {
+public class LowPolyView: UIView {
     
-    @IBInspectable var image: UIImage?
+    // MARK: Properties
+    
+    @IBInspectable public var image: UIImage? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    @IBInspectable public var vertexDensity: Int {
+        get {
+            return _vertexDensity
+        }
+        set(newVertexDensity) {
+            if newVertexDensity < 3 {
+                _vertexDensity = 3
+            } else {
+                _vertexDensity = newVertexDensity
+            }
+            
+            self.setNeedsDisplay()
+        }
+    }
+    
+    private var _vertexDensity:Int = 10
     
     // MARK: Initialization
     
@@ -19,53 +42,37 @@ class LowPolyView: UIView {
         //backgroundColor = UIColor.redColor()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
     
-    required override init(frame: CGRect) {
+    public required override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
     // MARK: Custom drawing
     
-    override func drawRect(rect: CGRect) {
+    public override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
         CGContextSetFillColorWithColor(context, UIColor(red: 0, green: 0, blue: 127/255.0, alpha: 1.0).CGColor)
         CGContextFillRect(context, rect)
         
-//        var vertices = Set<CGPoint>()
-//        
-//        // Corners
-//        vertices.insert(rect.origin)
-//        vertices.insert(CGPointMake(rect.origin.x, rect.origin.y + rect.size.height))
-//        vertices.insert(CGPointMake(rect.origin.x + rect.size.width, rect.origin.y))
-//        vertices.insert(CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height))
-//        
-//        // Random Vertices
-//        let numVertices = 5
-//        let insetRect = CGRectInset(rect, 20, 20)
-//        for var i = 0; i < numVertices; i++ {
-//            let x = CGFloat(arc4random_uniform(UInt32(round(CGRectGetWidth(insetRect) - rect.origin.x)))) + insetRect.origin.x
-//            let y = CGFloat(arc4random_uniform(UInt32(round(CGRectGetHeight(insetRect) - rect.origin.y)))) + insetRect.origin.y
-//            
-//            vertices.insert(CGPointMake(x, y))
-//        }
+        var vertices = Set<CGPoint>()
         
-        //var vertices: Set<CGPoint> = [CGPointMake(181.0, 212.0), CGPointMake(201.0, 575.0), CGPointMake(375.0, 0.0), CGPointMake(98.0, 111.0), CGPointMake(290.0, 620.0), CGPointMake(375.0, 667.0), CGPointMake(0.0, 0.0), CGPointMake(0.0, 667.0), CGPointMake(135.0, 439.0)]
+        // Random Vertices
+        let numVertices = vertexDensity
+        let insetRect = CGRectInset(rect, 20, 20)
+        for var i = 0; i < numVertices; i++ {
+            let x = CGFloat(arc4random_uniform(UInt32(round(CGRectGetWidth(insetRect) - rect.origin.x)))) + insetRect.origin.x
+            let y = CGFloat(arc4random_uniform(UInt32(round(CGRectGetHeight(insetRect) - rect.origin.y)))) + insetRect.origin.y
+            
+            vertices.insert(CGPointMake(x, y))
+        }
         
-        var vertices: Set<CGPoint> = [
-            CGPoint(x: 98.0, y: 111.0),
-            CGPoint(x: 135.0, y: 439.0),
-            CGPoint(x: 201.0, y: 575.0),
-            CGPoint(x: 290.0, y: 620.0),
-            CGPoint(x: 181.0, y: 212.0)
-        ]
-        
-        
+        // Draw Vertices
         CGContextSetFillColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
         for vertex in vertices {
             let dotSize: CGFloat = 5.0
@@ -74,20 +81,12 @@ class LowPolyView: UIView {
         }
         
         // Triangulation
-//        let triangulation = Delaunay.triangulate(vertices)
-//        for triangle in triangulation {
-//            println("drawing \(triangle)")
-//            CGContextAddPath(context, triangle.path)
-//            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
-//            CGContextStrokePath(context)
-//            
-//            CGContextAddPath(context, triangle.circumcircle.path)
-//            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 0.5).CGColor)
-//            CGContextStrokePath(context)
-//        }
-        
-        let triangles = Delaunay.triangulate(vertices, boundingRect: UIScreen.mainScreen().bounds)
-        
+        let triangles = Delaunay.triangulate(vertices, boundingRect: rect)
+        for triangle in triangles {
+            CGContextAddPath(context, triangle.path)
+            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
+            CGContextStrokePath(context)
+        }
         
     }
 

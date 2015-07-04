@@ -15,26 +15,27 @@
 + (NSSet *)objc_triangulate:(NSSet *)values boundingRect:(CGRect)boundingRect
 {
     NSAssert(values.count >= 3, @"%s requires at least 3 points for a successful triangulation", __PRETTY_FUNCTION__);
-    std::vector<p2t::Point *> polyline;
-    std::vector<p2t::Triangle *> closedTriangles;
+    std::vector<p2t::Point *> boundingPoints;
     p2t::CDT *cdt;
     
-    polyline.push_back(new p2t::Point(CGRectGetMinX(boundingRect), CGRectGetMinY(boundingRect)));
-    polyline.push_back(new p2t::Point(CGRectGetMaxX(boundingRect), CGRectGetMinY(boundingRect)));
-    polyline.push_back(new p2t::Point(CGRectGetMaxX(boundingRect), CGRectGetMaxY(boundingRect)));
-    polyline.push_back(new p2t::Point(CGRectGetMinX(boundingRect), CGRectGetMaxY(boundingRect)));
+    boundingPoints.push_back(new p2t::Point(CGRectGetMinX(boundingRect), CGRectGetMinY(boundingRect)));
+    boundingPoints.push_back(new p2t::Point(CGRectGetMaxX(boundingRect), CGRectGetMinY(boundingRect)));
+    boundingPoints.push_back(new p2t::Point(CGRectGetMaxX(boundingRect), CGRectGetMaxY(boundingRect)));
+    boundingPoints.push_back(new p2t::Point(CGRectGetMinX(boundingRect), CGRectGetMaxY(boundingRect)));
     
-    cdt = new p2t::CDT(polyline);
+    cdt = new p2t::CDT(boundingPoints);
     
     for (NSValue *value in values) {
         NSAssert(strcmp(value.objCType, @encode(CGPoint)) == 0, @"Expected a CGPoint, got a %s", value.objCType);
         CGPoint vertex = value.CGPointValue;
         
-        cdt->AddPoint(new p2t::Point((double)vertex.x, (double)vertex.y));
+        if ((vertex.x >= CGRectGetMinX(boundingRect) && vertex.x <= CGRectGetMaxX(boundingRect)) && (vertex.y >= CGRectGetMinY(boundingRect) && vertex.y <= CGRectGetMaxY(boundingRect))) {
+            cdt->AddPoint(new p2t::Point((double)vertex.x, (double)vertex.y));
+        }
     }
     
     cdt->Triangulate();
-    closedTriangles = cdt->GetTriangles();
+    std::vector<p2t::Triangle *> closedTriangles = cdt->GetTriangles();
     
     NSMutableSet *triangles = [[NSMutableSet alloc] initWithCapacity:closedTriangles.size()];
     for (int i = 0; i < closedTriangles.size(); i++) {
@@ -46,6 +47,13 @@
         Triangle *triangle = [[Triangle alloc] initWithA:CGPointMake(a.x, a.y) b:CGPointMake(b.x, b.y) c:CGPointMake(c.x, c.y)];
         [triangles addObject:triangle];
     }
+    
+    // Cleanup
+    delete cdt;
+    for (std::vector<p2t::Point *>::iterator it = boundingPoints.begin(); it != boundingPoints.end(); ++it) {
+        delete * it;
+    }
+    boundingPoints.clear();
     
     return triangles;
 }
