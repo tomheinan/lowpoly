@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Tom Heinan. All rights reserved.
 //
 
+
+#import <LowPoly/LowPoly-Swift.h>
+
 #import "Delaunay.h"
-#import "Triangle.h"
 #import "poly2tri.h"
 
 @implementation Delaunay

@@ -7,4 +7,3 @@
 //
 
 #import "Delaunay.h"
-#import "Triangle.h"
