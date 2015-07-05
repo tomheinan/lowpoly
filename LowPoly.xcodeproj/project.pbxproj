@@ -33,9 +33,13 @@
 		E24799AF1B497DC20041DCE5 /* DelaunayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799AE1B497DC20041DCE5 /* DelaunayTests.swift */; };
 		E24799B21B4996EC0041DCE5 /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B11B4996EC0041DCE5 /* Delaunay.swift */; };
 		E24799B31B4996F40041DCE5 /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B11B4996EC0041DCE5 /* Delaunay.swift */; };
-		E24799B61B49A8520041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B51B49A8520041DCE5 /* Mersenne.swift */; };
 		E24799B81B49AAED0041DCE5 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B71B49AAED0041DCE5 /* Triangle.swift */; };
 		E24799B91B49AAED0041DCE5 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B71B49AAED0041DCE5 /* Triangle.swift */; };
+		E24799BC1B49C0380041DCE5 /* Mersenne.h in Headers */ = {isa = PBXBuildFile; fileRef = E24799BA1B49C0380041DCE5 /* Mersenne.h */; };
+		E24799BD1B49C0380041DCE5 /* Mersenne.mm in Sources */ = {isa = PBXBuildFile; fileRef = E24799BB1B49C0380041DCE5 /* Mersenne.mm */; };
+		E24799BF1B49D1CB0041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */; };
+		E24799C01B49D1CB0041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */; };
+		E24799C31B49D1F20041DCE5 /* MersenneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799C11B49D1F20041DCE5 /* MersenneTests.swift */; };
 		E2E4C4851B3F13C600E399FB /* LowPoly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4C4791B3F13C500E399FB /* LowPoly.framework */; };
 		E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4C4951B3F14C700E399FB /* LowPolyView.swift */; };
 		E2E4C4A01B3F16E300E399FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4C49F1B3F16E300E399FB /* AppDelegate.swift */; };
@@ -83,8 +87,11 @@
 		E23434CD1B4742B600B47472 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointTests.swift; path = Extensions/CGPointTests.swift; sourceTree = "<group>"; };
 		E24799AE1B497DC20041DCE5 /* DelaunayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelaunayTests.swift; path = Geometry/DelaunayTests.swift; sourceTree = "<group>"; };
 		E24799B11B4996EC0041DCE5 /* Delaunay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Delaunay.swift; path = Geometry/Delaunay.swift; sourceTree = "<group>"; };
-		E24799B51B49A8520041DCE5 /* Mersenne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mersenne.swift; path = PRNG/Mersenne.swift; sourceTree = "<group>"; };
 		E24799B71B49AAED0041DCE5 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Triangle.swift; path = Geometry/Triangle.swift; sourceTree = "<group>"; };
+		E24799BA1B49C0380041DCE5 /* Mersenne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mersenne.h; path = PRNG/Mersenne.h; sourceTree = "<group>"; };
+		E24799BB1B49C0380041DCE5 /* Mersenne.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Mersenne.mm; path = PRNG/Mersenne.mm; sourceTree = "<group>"; };
+		E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mersenne.swift; path = PRNG/Mersenne.swift; sourceTree = "<group>"; };
+		E24799C11B49D1F20041DCE5 /* MersenneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MersenneTests.swift; path = PRNG/MersenneTests.swift; sourceTree = "<group>"; };
 		E2E4C4791B3F13C500E399FB /* LowPoly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LowPoly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E4C47D1B3F13C500E399FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E4C4841B3F13C600E399FB /* LowPolyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LowPolyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,7 +196,17 @@
 		E24799B41B49A8380041DCE5 /* PRNG */ = {
 			isa = PBXGroup;
 			children = (
-				E24799B51B49A8520041DCE5 /* Mersenne.swift */,
+				E24799BA1B49C0380041DCE5 /* Mersenne.h */,
+				E24799BB1B49C0380041DCE5 /* Mersenne.mm */,
+				E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */,
+			);
+			name = PRNG;
+			sourceTree = "<group>";
+		};
+		E24799C41B49D1F80041DCE5 /* PRNG */ = {
+			isa = PBXGroup;
+			children = (
+				E24799C11B49D1F20041DCE5 /* MersenneTests.swift */,
 			);
 			name = PRNG;
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				E24799B01B497DD20041DCE5 /* Geometry */,
+				E24799C41B49D1F80041DCE5 /* PRNG */,
 				E25129841B449AC400CF5BD5 /* Extensions */,
 				E2E4C4891B3F13C600E399FB /* Supporting Files */,
 			);
@@ -317,6 +335,7 @@
 				E23434971B4708D300B47472 /* sweep_context.h in Headers */,
 				E23434941B4708D300B47472 /* sweep.h in Headers */,
 				E23434511B46F29600B47472 /* LowPoly-Bridging-Header.h in Headers */,
+				E24799BC1B49C0380041DCE5 /* Mersenne.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,12 +470,13 @@
 			files = (
 				E23434951B4708D300B47472 /* sweep_context.cc in Sources */,
 				E23434871B4708D300B47472 /* shapes.cc in Sources */,
+				E24799BF1B49D1CB0041DCE5 /* Mersenne.swift in Sources */,
 				E234348C1B4708D300B47472 /* advancing_front.cc in Sources */,
 				E24799B81B49AAED0041DCE5 /* Triangle.swift in Sources */,
 				E234348F1B4708D300B47472 /* cdt.cc in Sources */,
 				E24799B21B4996EC0041DCE5 /* Delaunay.swift in Sources */,
-				E24799B61B49A8520041DCE5 /* Mersenne.swift in Sources */,
 				E23434C61B470C7000B47472 /* Delaunay.mm in Sources */,
+				E24799BD1B49C0380041DCE5 /* Mersenne.mm in Sources */,
 				E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */,
 				E23434CC1B47428200B47472 /* CGPoint.swift in Sources */,
 				E23434921B4708D300B47472 /* sweep.cc in Sources */,
@@ -469,12 +489,14 @@
 			files = (
 				E23434881B4708D300B47472 /* shapes.cc in Sources */,
 				E23434901B4708D300B47472 /* cdt.cc in Sources */,
+				E24799C01B49D1CB0041DCE5 /* Mersenne.swift in Sources */,
 				E23434931B4708D300B47472 /* sweep.cc in Sources */,
 				E23434CF1B4742C500B47472 /* CGPoint.swift in Sources */,
 				E24799B31B4996F40041DCE5 /* Delaunay.swift in Sources */,
 				E234348D1B4708D300B47472 /* advancing_front.cc in Sources */,
 				E23434CE1B4742B600B47472 /* CGPointTests.swift in Sources */,
 				E24799B91B49AAED0041DCE5 /* Triangle.swift in Sources */,
+				E24799C31B49D1F20041DCE5 /* MersenneTests.swift in Sources */,
 				E2F7C8361B4761B100D1A4A2 /* Delaunay.mm in Sources */,
 				E24799AF1B497DC20041DCE5 /* DelaunayTests.swift in Sources */,
 				E23434961B4708D300B47472 /* sweep_context.cc in Sources */,

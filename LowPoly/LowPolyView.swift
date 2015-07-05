@@ -62,6 +62,8 @@ public class LowPolyView: UIView {
         
         var vertices = Set<CGPoint>()
         
+        //let rands = Mersenne.objc_randsForSeed(0, ofCount: 5);
+        
         // Random Vertices
         let numVertices = vertexDensity
         let insetRect = CGRectInset(rect, 20, 20)

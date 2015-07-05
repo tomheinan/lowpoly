@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension Delaunay {
+public extension Delaunay {
     
     public static func triangulate(vertices: Set<CGPoint>, boundingRect: CGRect) -> Set<Triangle> {
         var values = Set<NSValue>()
