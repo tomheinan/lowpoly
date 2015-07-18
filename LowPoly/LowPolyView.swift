@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreGraphics
 
 @IBDesignable
 public class LowPolyView: UIView {
@@ -55,41 +56,92 @@ public class LowPolyView: UIView {
     // MARK: Custom drawing
     
     public override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        
-        CGContextSetFillColorWithColor(context, UIColor(red: 0, green: 0, blue: 127/255.0, alpha: 1.0).CGColor)
-        CGContextFillRect(context, rect)
-        
-        var vertices = Set<CGPoint>()
-        
-        //let rands = Mersenne.objc_randsForSeed(0, ofCount: 5);
-        
-        // Random Vertices
-        let numVertices = vertexDensity
-        let insetRect = CGRectInset(rect, 20, 20)
-        for var i = 0; i < numVertices; i++ {
-            let x = CGFloat(arc4random_uniform(UInt32(round(CGRectGetWidth(insetRect) - rect.origin.x)))) + insetRect.origin.x
-            let y = CGFloat(arc4random_uniform(UInt32(round(CGRectGetHeight(insetRect) - rect.origin.y)))) + insetRect.origin.y
+        if let image = self.image {
+            let context = UIGraphicsGetCurrentContext()
             
-            vertices.insert(CGPointMake(x, y))
-        }
-        
-        // Draw Vertices
-        CGContextSetFillColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
-        for vertex in vertices {
-            let dotSize: CGFloat = 5.0
+            // First, we need to scale our sample image so that it fits within the bounds
+            // of the view rect (aspect fill)
+            var imageFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: image.size)
             
-            CGContextFillEllipseInRect(context, CGRectMake(vertex.x - (dotSize * 0.5), vertex.y - (dotSize * 0.5), dotSize, dotSize))
+            switch (rect.orientation, imageFrame.orientation) {
+                
+            case (.Landscape, .Landscape), (.Portrait, .Landscape), (.Square, .Landscape), (.Portrait, .Square):
+                // Scale imageBounds height to match rect
+                let scaleFactor = CGRectGetHeight(rect) / CGRectGetHeight(imageFrame)
+                imageFrame = CGRectApplyAffineTransform(imageFrame, CGAffineTransformMakeScale(scaleFactor, scaleFactor))
+                
+                if rect.orientation == imageFrame.orientation && CGRectGetWidth(rect) > CGRectGetWidth(imageFrame) {
+                    let aspectFillFactor = CGRectGetWidth(rect) / CGRectGetWidth(imageFrame)
+                    imageFrame = CGRectApplyAffineTransform(imageFrame, CGAffineTransformMakeScale(aspectFillFactor, aspectFillFactor))
+                }
+                
+            case (.Landscape, .Portrait), (.Portrait, .Portrait), (.Square, .Portrait), (.Landscape, .Square):
+                // scale imageBounds width to match rect
+                let scaleFactor = CGRectGetWidth(rect) / CGRectGetWidth(imageFrame)
+                imageFrame = CGRectApplyAffineTransform(imageFrame, CGAffineTransformMakeScale(scaleFactor, scaleFactor))
+                
+                if rect.orientation == imageFrame.orientation && CGRectGetHeight(rect) > CGRectGetHeight(imageFrame) {
+                    let aspectFillFactor = CGRectGetHeight(rect) / CGRectGetHeight(imageFrame)
+                    imageFrame = CGRectApplyAffineTransform(imageFrame, CGAffineTransformMakeScale(aspectFillFactor, aspectFillFactor))
+                }
+                
+            default:
+                let scaleFactor = CGRectGetWidth(rect) / CGRectGetWidth(imageFrame)
+                imageFrame = CGRectApplyAffineTransform(imageFrame, CGAffineTransformMakeScale(scaleFactor, scaleFactor))
+                
+            }
+            
+            if CGRectGetWidth(imageFrame) > CGRectGetWidth(rect) {
+                let xOffset = (CGRectGetWidth(rect) - CGRectGetWidth(imageFrame)) * 0.5
+                imageFrame.origin = CGPoint(x: imageFrame.origin.x + xOffset, y: imageFrame.origin.y)
+            } else if CGRectGetHeight(imageFrame) > CGRectGetHeight(rect) {
+                let yOffset = (CGRectGetHeight(rect) - CGRectGetHeight(imageFrame)) * 0.5
+                imageFrame.origin = CGPoint(x: imageFrame.origin.x, y: imageFrame.origin.y + yOffset)
+            }
+            
+            
+            
+//            image.drawInRect(imageFrame)
+//            CGContextClipToRect(context, rect)
+            
+            let imageHeight = CGImageGetHeight(image.CGImage)
+            let bytesPerRow = CGImageGetBytesPerRow(image.CGImage)
+            let imageSizeInBytes = imageHeight * bytesPerRow
+            
+            let vertices = Mersenne.generateVertices(rect, seed: imageSizeInBytes, count: vertexDensity)
+            
+            // Triangulation
+            let triangles = Delaunay.triangulate(vertices, boundingRect: rect)
+            for triangle in triangles {
+                let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(4)
+                let colorSpace = CGColorSpaceCreateDeviceRGB()
+                let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
+                let pixelContext = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, bitmapInfo)
+                
+                let centroid = triangle.centroid
+                //CGContextScaleCTM(pixelContext, 0, -1.0)
+                CGContextTranslateCTM(pixelContext, -centroid.x, -(CGRectGetHeight(imageFrame) - centroid.y))
+                CGContextDrawImage(pixelContext, imageFrame, image.CGImage)
+                
+                let colorAtCentroid = UIColor(red: CGFloat(pixel[0])/255.0, green: CGFloat(pixel[1])/255.0, blue: CGFloat(pixel[2])/255.0, alpha: CGFloat(pixel[3])/255.0)
+                pixel.dealloc(4)
+                
+                CGContextAddPath(context, triangle.path)
+                CGContextSetFillColorWithColor(context, colorAtCentroid.CGColor)
+                CGContextFillPath(context)
+                
+                //CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
+                //CGContextStrokePath(context)
+            }
+            
+            // Draw Vertices
+            CGContextSetFillColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
+            for vertex in vertices {
+                let dotSize: CGFloat = 5.0
+                
+                CGContextFillEllipseInRect(context, CGRectMake(vertex.x - (dotSize * 0.5), vertex.y - (dotSize * 0.5), dotSize, dotSize))
+            }
         }
-        
-        // Triangulation
-        let triangles = Delaunay.triangulate(vertices, boundingRect: rect)
-        for triangle in triangles {
-            CGContextAddPath(context, triangle.path)
-            CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
-            CGContextStrokePath(context)
-        }
-        
     }
 
 }

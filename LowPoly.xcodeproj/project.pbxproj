@@ -40,6 +40,11 @@
 		E24799BF1B49D1CB0041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */; };
 		E24799C01B49D1CB0041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */; };
 		E24799C31B49D1F20041DCE5 /* MersenneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799C11B49D1F20041DCE5 /* MersenneTests.swift */; };
+		E28F63171B5AC7BE00779329 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63161B5AC7BE00779329 /* CGFloat.swift */; };
+		E28F63181B5AC7BE00779329 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63161B5AC7BE00779329 /* CGFloat.swift */; };
+		E28F631A1B5ADB8600779329 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63191B5ADB8600779329 /* CGRect.swift */; };
+		E28F631B1B5ADB8600779329 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63191B5ADB8600779329 /* CGRect.swift */; };
+		E28F631E1B5ADCE300779329 /* CGRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F631C1B5ADCE300779329 /* CGRectTests.swift */; };
 		E2E4C4851B3F13C600E399FB /* LowPoly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4C4791B3F13C500E399FB /* LowPoly.framework */; };
 		E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4C4951B3F14C700E399FB /* LowPolyView.swift */; };
 		E2E4C4A01B3F16E300E399FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4C49F1B3F16E300E399FB /* AppDelegate.swift */; };
@@ -92,6 +97,9 @@
 		E24799BB1B49C0380041DCE5 /* Mersenne.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Mersenne.mm; path = PRNG/Mersenne.mm; sourceTree = "<group>"; };
 		E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mersenne.swift; path = PRNG/Mersenne.swift; sourceTree = "<group>"; };
 		E24799C11B49D1F20041DCE5 /* MersenneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MersenneTests.swift; path = PRNG/MersenneTests.swift; sourceTree = "<group>"; };
+		E28F63161B5AC7BE00779329 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = Extensions/CGFloat.swift; sourceTree = "<group>"; };
+		E28F63191B5ADB8600779329 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRect.swift; path = Extensions/CGRect.swift; sourceTree = "<group>"; };
+		E28F631C1B5ADCE300779329 /* CGRectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRectTests.swift; path = Extensions/CGRectTests.swift; sourceTree = "<group>"; };
 		E2E4C4791B3F13C500E399FB /* LowPoly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LowPoly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E4C47D1B3F13C500E399FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E4C4841B3F13C600E399FB /* LowPolyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LowPolyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				E23434CD1B4742B600B47472 /* CGPointTests.swift */,
+				E28F631C1B5ADCE300779329 /* CGRectTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				E23434CA1B47428200B47472 /* CGPoint.swift */,
+				E28F63161B5AC7BE00779329 /* CGFloat.swift */,
+				E28F63191B5ADB8600779329 /* CGRect.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -477,9 +488,11 @@
 				E24799B21B4996EC0041DCE5 /* Delaunay.swift in Sources */,
 				E23434C61B470C7000B47472 /* Delaunay.mm in Sources */,
 				E24799BD1B49C0380041DCE5 /* Mersenne.mm in Sources */,
+				E28F63171B5AC7BE00779329 /* CGFloat.swift in Sources */,
 				E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */,
 				E23434CC1B47428200B47472 /* CGPoint.swift in Sources */,
 				E23434921B4708D300B47472 /* sweep.cc in Sources */,
+				E28F631A1B5ADB8600779329 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,10 +502,13 @@
 			files = (
 				E23434881B4708D300B47472 /* shapes.cc in Sources */,
 				E23434901B4708D300B47472 /* cdt.cc in Sources */,
+				E28F63181B5AC7BE00779329 /* CGFloat.swift in Sources */,
 				E24799C01B49D1CB0041DCE5 /* Mersenne.swift in Sources */,
 				E23434931B4708D300B47472 /* sweep.cc in Sources */,
 				E23434CF1B4742C500B47472 /* CGPoint.swift in Sources */,
 				E24799B31B4996F40041DCE5 /* Delaunay.swift in Sources */,
+				E28F631E1B5ADCE300779329 /* CGRectTests.swift in Sources */,
+				E28F631B1B5ADB8600779329 /* CGRect.swift in Sources */,
 				E234348D1B4708D300B47472 /* advancing_front.cc in Sources */,
 				E23434CE1B4742B600B47472 /* CGPointTests.swift in Sources */,
 				E24799B91B49AAED0041DCE5 /* Triangle.swift in Sources */,

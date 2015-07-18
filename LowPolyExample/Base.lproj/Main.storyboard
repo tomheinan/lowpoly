@@ -18,8 +18,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="vertexDensity">
-                                <integer key="value" value="10"/>
+                                <integer key="value" value="25"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="Portrait"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
@@ -27,4 +28,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Portrait" width="609" height="960"/>
+    </resources>
 </document>
