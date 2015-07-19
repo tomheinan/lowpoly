@@ -122,6 +122,8 @@ public class LowPolyView: UIView {
                 CGContextSetFillColorWithColor(context, color.CGColor)
                 CGContextFillPath(context)
             }
+            
+            CGContextClipToRect(context, rect)
         }
     }
     
