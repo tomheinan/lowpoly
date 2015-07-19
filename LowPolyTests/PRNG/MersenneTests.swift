@@ -12,30 +12,28 @@ import XCTest
 class MersenneTests: XCTestCase {
     
     func testRandsForSeed() {
-//        let seed = 0
-//        let count = 5
-//        
-//        let rands = Mersenne.objc_randsForSeed(seed, ofCount: count) as! [NSNumber]
-//        let expectedRands = [
-//            NSNumber(double: 0.1597933633704609),
-//            NSNumber(double: 0.9921452096298288),
-//            NSNumber(double: 0.03956902584486566),
-//            NSNumber(double: 0.5974946626946718),
-//            NSNumber(double: 0.5422849699926046)
-//        ]
-//        
-//        #if CGFLOAT_IS_DOUBLE
-//            let epsilon = CGFloat(DBL_EPSILON)
-//        #else
-//            let epsilon = CGFloat(FLT_EPSILON)
-//        #endif
-//        
-//        for var i = 0; i < count; i++ {
-//            let lhs = CGFloat(rands[i].doubleValue)
-//            let rhs = CGFloat(expectedRands[i].doubleValue)
-//            
-//            XCTAssertTrue(fabs(lhs - rhs) < epsilon, "Generated numbers should be consistent for a given seed")
-//        }
+        let seed = 0
+        let count = 5
+        
+        let rands = Mersenne.objc_rands(seed, count: count) as! [NSNumber]
+        let expectedRands = [
+            NSNumber(double: 0.1597933633704609),
+            NSNumber(double: 0.9921452096298288),
+            NSNumber(double: 0.03956902584486566),
+            NSNumber(double: 0.5974946626946718),
+            NSNumber(double: 0.5422849699926046)
+        ]
+        
+        for var i = 0; i < count; i++ {
+            let lhs = CGFloat(rands[i].doubleValue)
+            let rhs = CGFloat(expectedRands[i].doubleValue)
+            
+            XCTAssertTrue(fabs(lhs - rhs) < CGFloat.epsilon, "Generated numbers should be consistent for a given seed")
+        }
+    }
+    
+    func testGenerateVertices() {
+        
     }
     
 }
