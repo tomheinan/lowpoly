@@ -35,7 +35,7 @@ public class LowPolyView: UIView {
         }
     }
     
-    private var _vertexDensity:Int = 10
+    private var _vertexDensity:Int = 25
     
     // MARK: Initialization
     
@@ -91,8 +91,6 @@ public class LowPolyView: UIView {
                 
             }
             
-            //image.drawInRect(imageFrame)
-            
             if CGRectGetWidth(imageFrame) > CGRectGetWidth(rect) {
                 let xOffset = (CGRectGetWidth(rect) - CGRectGetWidth(imageFrame)) * 0.5
                 imageFrame.origin = CGPoint(x: imageFrame.origin.x + xOffset, y: imageFrame.origin.y)
@@ -108,15 +106,21 @@ public class LowPolyView: UIView {
             
             let vertices = Mersenne.generateVertices(rect, seed: imageSizeInBytes, count: vertexDensity)
             
-            // Triangulation
+            // Then we can triangulate
             let triangles = Delaunay.triangulate(vertices, boundingRect: rect)
             for triangle in triangles {
-                CGContextAddPath(context, triangle.path)
-                CGContextSetFillColorWithColor(context, colorAtPoint(triangle.centroid, imageFrame: imageFrame).CGColor)
-                CGContextFillPath(context)
+                let color = colorAtPoint(triangle.centroid, imageFrame: imageFrame)
                 
-                //CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
-                //CGContextStrokePath(context)
+                // Faux antialiasing
+                CGContextAddPath(context, triangle.path)
+                CGContextSetLineWidth(context, 0.5)
+                CGContextSetStrokeColorWithColor(context, color.CGColor)
+                CGContextStrokePath(context)
+                
+                // Fill in those triangles!
+                CGContextAddPath(context, triangle.path)
+                CGContextSetFillColorWithColor(context, color.CGColor)
+                CGContextFillPath(context)
             }
         }
     }
