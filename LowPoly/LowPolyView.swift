@@ -91,18 +91,16 @@ public class LowPolyView: UIView {
                 
             }
             
+            //image.drawInRect(imageFrame)
+            
             if CGRectGetWidth(imageFrame) > CGRectGetWidth(rect) {
                 let xOffset = (CGRectGetWidth(rect) - CGRectGetWidth(imageFrame)) * 0.5
                 imageFrame.origin = CGPoint(x: imageFrame.origin.x + xOffset, y: imageFrame.origin.y)
-            } else if CGRectGetHeight(imageFrame) > CGRectGetHeight(rect) {
-                let yOffset = (CGRectGetHeight(rect) - CGRectGetHeight(imageFrame)) * 0.5
-                imageFrame.origin = CGPoint(x: imageFrame.origin.x, y: imageFrame.origin.y + yOffset)
             }
-            
-            
-            
-//            image.drawInRect(imageFrame)
-//            CGContextClipToRect(context, rect)
+            if CGRectGetHeight(imageFrame) > CGRectGetHeight(rect) {
+                let yOffset = (CGRectGetHeight(rect) - CGRectGetHeight(imageFrame)) * 0.5
+                imageFrame.origin = CGPoint(x: imageFrame.origin.x, y: imageFrame.origin.y - yOffset)
+            }
             
             let imageHeight = CGImageGetHeight(image.CGImage)
             let bytesPerRow = CGImageGetBytesPerRow(image.CGImage)
@@ -113,34 +111,36 @@ public class LowPolyView: UIView {
             // Triangulation
             let triangles = Delaunay.triangulate(vertices, boundingRect: rect)
             for triangle in triangles {
-                let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(4)
-                let colorSpace = CGColorSpaceCreateDeviceRGB()
-                let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-                let pixelContext = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, bitmapInfo)
-                
-                let centroid = triangle.centroid
-                //CGContextScaleCTM(pixelContext, 0, -1.0)
-                CGContextTranslateCTM(pixelContext, -centroid.x, -(CGRectGetHeight(imageFrame) - centroid.y))
-                CGContextDrawImage(pixelContext, imageFrame, image.CGImage)
-                
-                let colorAtCentroid = UIColor(red: CGFloat(pixel[0])/255.0, green: CGFloat(pixel[1])/255.0, blue: CGFloat(pixel[2])/255.0, alpha: CGFloat(pixel[3])/255.0)
-                pixel.dealloc(4)
-                
                 CGContextAddPath(context, triangle.path)
-                CGContextSetFillColorWithColor(context, colorAtCentroid.CGColor)
+                CGContextSetFillColorWithColor(context, colorAtPoint(triangle.centroid, imageFrame: imageFrame).CGColor)
                 CGContextFillPath(context)
                 
                 //CGContextSetStrokeColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
                 //CGContextStrokePath(context)
             }
+        }
+    }
+    
+    // MARK: Private methods
+    
+    func colorAtPoint(point: CGPoint, imageFrame: CGRect) -> UIColor {
+        if let image = self.image {
+            let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(4)
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
+            let context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, bitmapInfo)
             
-            // Draw Vertices
-            CGContextSetFillColorWithColor(context, UIColor(white: 1.0, alpha: 1.0).CGColor)
-            for vertex in vertices {
-                let dotSize: CGFloat = 5.0
-                
-                CGContextFillEllipseInRect(context, CGRectMake(vertex.x - (dotSize * 0.5), vertex.y - (dotSize * 0.5), dotSize, dotSize))
-            }
+            println(imageFrame)
+            
+            CGContextTranslateCTM(context, -point.x, -(CGRectGetHeight(imageFrame) - point.y))
+            CGContextDrawImage(context, imageFrame, image.CGImage)
+            
+            let color = UIColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
+            pixel.dealloc(4)
+            
+            return color
+        } else {
+            return UIColor.clearColor()
         }
     }
 

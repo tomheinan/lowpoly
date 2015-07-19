@@ -28,48 +28,48 @@ public extension Mersenne {
             vertices.insert(CGPoint(x: x, y: y))
         }
         
-        if numBoundingPoints > 0 {
-            var numHorizontalBoundingPoints: Int
-            var numVerticalBoundingPoints: Int
-            
-            switch bounds.orientation {
-                
-            case .Landscape:
-                let aspectRatio = CGRectGetHeight(bounds) / CGRectGetWidth(bounds)
-                numHorizontalBoundingPoints = Int(round((1.0 - aspectRatio) * CGFloat(numBoundingPoints)))
-                numVerticalBoundingPoints = Int(round(aspectRatio * CGFloat(numBoundingPoints)))
-                
-            case .Portrait:
-                let aspectRatio = CGRectGetWidth(bounds) / CGRectGetHeight(bounds)
-                numHorizontalBoundingPoints = Int(round(aspectRatio * CGFloat(numBoundingPoints)))
-                numVerticalBoundingPoints = Int(round((1.0 - aspectRatio) * CGFloat(numBoundingPoints)))
-                
-            default:
-                numHorizontalBoundingPoints = Int(round(CGFloat(numBoundingPoints) * 0.5))
-                numVerticalBoundingPoints = Int(round(CGFloat(numBoundingPoints) * 0.5))
-                
-            }
-            
-            var j = 0
-            for var i = numCoordinates; i < rands.count - numVerticalBoundingPoints; i++ {
-                if j < Int(round(Double(numHorizontalBoundingPoints) * 0.5)) {
-                    vertices.insert(CGPoint(x: round(CGFloat(rands[i].doubleValue) * CGRectGetWidth(bounds)), y: CGRectGetMinY(bounds)))
-                    j++
-                } else {
-                    vertices.insert(CGPoint(x: round(CGFloat(rands[i].doubleValue) * CGRectGetWidth(bounds)), y: CGRectGetMaxY(bounds)))
-                }
-            }
-            
-            j = 0
-            for var i = numCoordinates + numHorizontalBoundingPoints; i < rands.count; i++ {
-                if j < Int(round(Double(numVerticalBoundingPoints) * 0.5)) {
-                    vertices.insert(CGPoint(x: CGRectGetMinX(bounds), y: round(CGFloat(rands[i].doubleValue) * CGRectGetHeight(bounds))))
-                    j++
-                } else {
-                    vertices.insert(CGPoint(x: CGRectGetMaxX(bounds), y: round(CGFloat(rands[i].doubleValue) * CGRectGetHeight(bounds))))
-                }
-            }
-        }
+//        if numBoundingPoints > 0 {
+//            var numHorizontalBoundingPoints: Int
+//            var numVerticalBoundingPoints: Int
+//            
+//            switch bounds.orientation {
+//                
+//            case .Landscape:
+//                let aspectRatio = CGRectGetHeight(bounds) / CGRectGetWidth(bounds)
+//                numHorizontalBoundingPoints = Int(round((1.0 - aspectRatio) * CGFloat(numBoundingPoints)))
+//                numVerticalBoundingPoints = Int(round(aspectRatio * CGFloat(numBoundingPoints)))
+//                
+//            case .Portrait:
+//                let aspectRatio = CGRectGetWidth(bounds) / CGRectGetHeight(bounds)
+//                numHorizontalBoundingPoints = Int(round(aspectRatio * CGFloat(numBoundingPoints)))
+//                numVerticalBoundingPoints = Int(round((1.0 - aspectRatio) * CGFloat(numBoundingPoints)))
+//                
+//            default:
+//                numHorizontalBoundingPoints = Int(round(CGFloat(numBoundingPoints) * 0.5))
+//                numVerticalBoundingPoints = Int(round(CGFloat(numBoundingPoints) * 0.5))
+//                
+//            }
+//            
+//            var j = 0
+//            for var i = numCoordinates; i < rands.count - numVerticalBoundingPoints; i++ {
+//                if j < Int(round(Double(numHorizontalBoundingPoints) * 0.5)) {
+//                    vertices.insert(CGPoint(x: round(CGFloat(rands[i].doubleValue) * CGRectGetWidth(bounds)), y: CGRectGetMinY(bounds)))
+//                    j++
+//                } else {
+//                    vertices.insert(CGPoint(x: round(CGFloat(rands[i].doubleValue) * CGRectGetWidth(bounds)), y: CGRectGetMaxY(bounds)))
+//                }
+//            }
+//            
+//            j = 0
+//            for var i = numCoordinates + numHorizontalBoundingPoints; i < rands.count; i++ {
+//                if j < Int(round(Double(numVerticalBoundingPoints) * 0.5)) {
+//                    vertices.insert(CGPoint(x: CGRectGetMinX(bounds), y: round(CGFloat(rands[i].doubleValue) * CGRectGetHeight(bounds))))
+//                    j++
+//                } else {
+//                    vertices.insert(CGPoint(x: CGRectGetMaxX(bounds), y: round(CGFloat(rands[i].doubleValue) * CGRectGetHeight(bounds))))
+//                }
+//            }
+//        }
         
         return vertices
     }

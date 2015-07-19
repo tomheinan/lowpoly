@@ -20,7 +20,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="vertexDensity">
                                 <integer key="value" value="25"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="Portrait"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="Square"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
@@ -29,6 +29,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Portrait" width="609" height="960"/>
+        <image name="Square" width="2448" height="2448"/>
     </resources>
 </document>
