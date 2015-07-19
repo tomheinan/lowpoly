@@ -130,8 +130,6 @@ public class LowPolyView: UIView {
             let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
             let context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, bitmapInfo)
             
-            println(imageFrame)
-            
             CGContextTranslateCTM(context, -point.x, -(CGRectGetHeight(imageFrame) - point.y))
             CGContextDrawImage(context, imageFrame, image.CGImage)
             
