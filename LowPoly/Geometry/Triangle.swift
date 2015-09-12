@@ -22,7 +22,7 @@ import UIKit
     }
     
     public var path: CGPath {
-        var path = CGPathCreateMutable()
+        let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, a.x, a.y)
         CGPathAddLineToPoint(path, nil, b.x, b.y)
         CGPathAddLineToPoint(path, nil, c.x, c.y)

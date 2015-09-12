@@ -14,7 +14,7 @@ extension CGRect {
         case Portrait, Landscape, Square
     }
     
-    public var orientation: Orientation {
+    public var orientation: CGRect.Orientation {
         if fabs(size.width - size.height) < CGFloat.epsilon {
             return Orientation.Square
         } else if size.width > size.height {

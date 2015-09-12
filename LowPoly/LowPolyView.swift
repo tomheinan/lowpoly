@@ -43,7 +43,7 @@ public class LowPolyView: UIView {
         //backgroundColor = UIColor.redColor()
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -133,8 +133,8 @@ public class LowPolyView: UIView {
         if let image = self.image {
             let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(4)
             let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let bitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-            let context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, bitmapInfo)
+            let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+            let context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, bitmapInfo.rawValue)
             
             CGContextTranslateCTM(context, -point.x, -(CGRectGetHeight(imageFrame) - point.y))
             CGContextDrawImage(context, imageFrame, image.CGImage)

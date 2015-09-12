@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+@testable import LowPoly
 
 class MersenneTests: XCTestCase {
     

@@ -27,24 +27,18 @@
 		E23434971B4708D300B47472 /* sweep_context.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434691B4708D300B47472 /* sweep_context.h */; };
 		E23434C51B470C7000B47472 /* Delaunay.h in Headers */ = {isa = PBXBuildFile; fileRef = E23434C31B470C7000B47472 /* Delaunay.h */; };
 		E23434C61B470C7000B47472 /* Delaunay.mm in Sources */ = {isa = PBXBuildFile; fileRef = E23434C41B470C7000B47472 /* Delaunay.mm */; };
-		E23434CC1B47428200B47472 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23434CA1B47428200B47472 /* CGPoint.swift */; };
-		E23434CE1B4742B600B47472 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23434CD1B4742B600B47472 /* CGPointTests.swift */; };
-		E23434CF1B4742C500B47472 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23434CA1B47428200B47472 /* CGPoint.swift */; };
 		E24799AF1B497DC20041DCE5 /* DelaunayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799AE1B497DC20041DCE5 /* DelaunayTests.swift */; };
 		E24799B21B4996EC0041DCE5 /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B11B4996EC0041DCE5 /* Delaunay.swift */; };
-		E24799B31B4996F40041DCE5 /* Delaunay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B11B4996EC0041DCE5 /* Delaunay.swift */; };
 		E24799B81B49AAED0041DCE5 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B71B49AAED0041DCE5 /* Triangle.swift */; };
-		E24799B91B49AAED0041DCE5 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799B71B49AAED0041DCE5 /* Triangle.swift */; };
 		E24799BC1B49C0380041DCE5 /* Mersenne.h in Headers */ = {isa = PBXBuildFile; fileRef = E24799BA1B49C0380041DCE5 /* Mersenne.h */; };
 		E24799BD1B49C0380041DCE5 /* Mersenne.mm in Sources */ = {isa = PBXBuildFile; fileRef = E24799BB1B49C0380041DCE5 /* Mersenne.mm */; };
 		E24799BF1B49D1CB0041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */; };
-		E24799C01B49D1CB0041DCE5 /* Mersenne.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799BE1B49D1CB0041DCE5 /* Mersenne.swift */; };
 		E24799C31B49D1F20041DCE5 /* MersenneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24799C11B49D1F20041DCE5 /* MersenneTests.swift */; };
 		E28F63171B5AC7BE00779329 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63161B5AC7BE00779329 /* CGFloat.swift */; };
-		E28F63181B5AC7BE00779329 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63161B5AC7BE00779329 /* CGFloat.swift */; };
 		E28F631A1B5ADB8600779329 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63191B5ADB8600779329 /* CGRect.swift */; };
-		E28F631B1B5ADB8600779329 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F63191B5ADB8600779329 /* CGRect.swift */; };
 		E28F631E1B5ADCE300779329 /* CGRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F631C1B5ADCE300779329 /* CGRectTests.swift */; };
+		E2B7B7B81BA49E9500FA7079 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B7B7B71BA49E9500FA7079 /* CGPoint.swift */; settings = {ASSET_TAGS = (); }; };
+		E2B7B7BA1BA4A20F00FA7079 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B7B7B91BA4A20F00FA7079 /* CGPointTests.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E4C4851B3F13C600E399FB /* LowPoly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4C4791B3F13C500E399FB /* LowPoly.framework */; };
 		E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4C4951B3F14C700E399FB /* LowPolyView.swift */; };
 		E2E4C4A01B3F16E300E399FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4C49F1B3F16E300E399FB /* AppDelegate.swift */; };
@@ -52,7 +46,6 @@
 		E2E4C4A71B3F16E300E399FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A61B3F16E300E399FB /* Images.xcassets */; };
 		E2E4C4AA1B3F16E300E399FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E4C4A81B3F16E300E399FB /* LaunchScreen.xib */; };
 		E2EE48CB1B41DDEF00857A74 /* LowPoly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E4C4791B3F13C500E399FB /* LowPoly.framework */; };
-		E2F7C8361B4761B100D1A4A2 /* Delaunay.mm in Sources */ = {isa = PBXBuildFile; fileRef = E23434C41B470C7000B47472 /* Delaunay.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,8 +81,6 @@
 		E23434691B4708D300B47472 /* sweep_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep_context.h; sourceTree = "<group>"; };
 		E23434C31B470C7000B47472 /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Delaunay.h; path = Geometry/Delaunay.h; sourceTree = "<group>"; };
 		E23434C41B470C7000B47472 /* Delaunay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Delaunay.mm; path = Geometry/Delaunay.mm; sourceTree = "<group>"; };
-		E23434CA1B47428200B47472 /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = Extensions/CGPoint.swift; sourceTree = "<group>"; };
-		E23434CD1B4742B600B47472 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointTests.swift; path = Extensions/CGPointTests.swift; sourceTree = "<group>"; };
 		E24799AE1B497DC20041DCE5 /* DelaunayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelaunayTests.swift; path = Geometry/DelaunayTests.swift; sourceTree = "<group>"; };
 		E24799B11B4996EC0041DCE5 /* Delaunay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Delaunay.swift; path = Geometry/Delaunay.swift; sourceTree = "<group>"; };
 		E24799B71B49AAED0041DCE5 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Triangle.swift; path = Geometry/Triangle.swift; sourceTree = "<group>"; };
@@ -100,6 +91,8 @@
 		E28F63161B5AC7BE00779329 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloat.swift; path = Extensions/CGFloat.swift; sourceTree = "<group>"; };
 		E28F63191B5ADB8600779329 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRect.swift; path = Extensions/CGRect.swift; sourceTree = "<group>"; };
 		E28F631C1B5ADCE300779329 /* CGRectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRectTests.swift; path = Extensions/CGRectTests.swift; sourceTree = "<group>"; };
+		E2B7B7B71BA49E9500FA7079 /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = Extensions/CGPoint.swift; sourceTree = "<group>"; };
+		E2B7B7B91BA4A20F00FA7079 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointTests.swift; path = Extensions/CGPointTests.swift; sourceTree = "<group>"; };
 		E2E4C4791B3F13C500E399FB /* LowPoly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LowPoly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E4C47D1B3F13C500E399FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E4C4841B3F13C600E399FB /* LowPolyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LowPolyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,7 +215,7 @@
 		E25129841B449AC400CF5BD5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E23434CD1B4742B600B47472 /* CGPointTests.swift */,
+				E2B7B7B91BA4A20F00FA7079 /* CGPointTests.swift */,
 				E28F631C1B5ADCE300779329 /* CGRectTests.swift */,
 			);
 			name = Extensions;
@@ -231,7 +224,7 @@
 		E26D3B2F1B3F3EE500C6F1D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E23434CA1B47428200B47472 /* CGPoint.swift */,
+				E2B7B7B71BA49E9500FA7079 /* CGPoint.swift */,
 				E28F63161B5AC7BE00779329 /* CGFloat.swift */,
 				E28F63191B5ADB8600779329 /* CGRect.swift */,
 			);
@@ -413,7 +406,9 @@
 		E2E4C4701B3F13C500E399FB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Tom Heinan";
 				TargetAttributes = {
 					E2E4C4781B3F13C500E399FB = {
@@ -489,8 +484,8 @@
 				E23434C61B470C7000B47472 /* Delaunay.mm in Sources */,
 				E24799BD1B49C0380041DCE5 /* Mersenne.mm in Sources */,
 				E28F63171B5AC7BE00779329 /* CGFloat.swift in Sources */,
+				E2B7B7B81BA49E9500FA7079 /* CGPoint.swift in Sources */,
 				E2E4C4961B3F14C700E399FB /* LowPolyView.swift in Sources */,
-				E23434CC1B47428200B47472 /* CGPoint.swift in Sources */,
 				E23434921B4708D300B47472 /* sweep.cc in Sources */,
 				E28F631A1B5ADB8600779329 /* CGRect.swift in Sources */,
 			);
@@ -501,19 +496,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23434881B4708D300B47472 /* shapes.cc in Sources */,
+				E2B7B7BA1BA4A20F00FA7079 /* CGPointTests.swift in Sources */,
 				E23434901B4708D300B47472 /* cdt.cc in Sources */,
-				E28F63181B5AC7BE00779329 /* CGFloat.swift in Sources */,
-				E24799C01B49D1CB0041DCE5 /* Mersenne.swift in Sources */,
 				E23434931B4708D300B47472 /* sweep.cc in Sources */,
-				E23434CF1B4742C500B47472 /* CGPoint.swift in Sources */,
-				E24799B31B4996F40041DCE5 /* Delaunay.swift in Sources */,
 				E28F631E1B5ADCE300779329 /* CGRectTests.swift in Sources */,
-				E28F631B1B5ADB8600779329 /* CGRect.swift in Sources */,
 				E234348D1B4708D300B47472 /* advancing_front.cc in Sources */,
-				E23434CE1B4742B600B47472 /* CGPointTests.swift in Sources */,
-				E24799B91B49AAED0041DCE5 /* Triangle.swift in Sources */,
 				E24799C31B49D1F20041DCE5 /* MersenneTests.swift in Sources */,
-				E2F7C8361B4761B100D1A4A2 /* Delaunay.mm in Sources */,
 				E24799AF1B497DC20041DCE5 /* DelaunayTests.swift in Sources */,
 				E23434961B4708D300B47472 /* sweep_context.cc in Sources */,
 			);
@@ -584,6 +572,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -667,6 +656,7 @@
 				INFOPLIST_FILE = LowPoly/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomheinan.lowpoly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SOURCE_ROOT)/LowPoly/Supporting Files/LowPoly-Bridging-Header.h";
@@ -691,6 +681,7 @@
 				INFOPLIST_FILE = LowPoly/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomheinan.lowpoly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SOURCE_ROOT)/LowPoly/Supporting Files/LowPoly-Bridging-Header.h";
@@ -712,6 +703,7 @@
 				);
 				INFOPLIST_FILE = LowPolyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomheinan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SOURCE_ROOT)/LowPoly/Supporting Files/LowPoly-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -729,6 +721,7 @@
 				);
 				INFOPLIST_FILE = LowPolyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomheinan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SOURCE_ROOT)/LowPoly/Supporting Files/LowPoly-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -745,6 +738,7 @@
 				);
 				INFOPLIST_FILE = LowPolyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomheinan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -757,6 +751,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LowPolyExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomheinan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				USER_HEADER_SEARCH_PATHS = "";
